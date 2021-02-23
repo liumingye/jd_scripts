@@ -5,12 +5,11 @@
 # 小鸽有礼2(活动时间：2021年1月28日～2021年2月28日)
 34 9 * * * node /scripts/jd_xgyl.js >> /scripts/logs/jd_jd_xgyl.log 2>&1
 
-#环球挑战赛 活动时间：2021-02-02 至 2021-02-22
-0 9,12,20,21 2-22 2 * node /scripts/jd_global.js >> /scripts/logs/jd_global.log 2>&1
-
 #女装盲盒 活动时间：2021-2-19至2021-2-25
 5 7,23 19-25 2 * node /scripts/jd_nzmh.js >> /scripts/logs/jd_nzmh.log 2>&1
 
+#京东国际盲盒
+5 7,12,23 * * * node /scripts/jd_global_mh.js >> /scripts/logs/jd_global_mh.log 2>&1
 #京东极速版天天领红包 活动时间：2021-1-18至2021-3-3
 5 0,23 * * * node /scripts/jd_speed_redpocke.js >> /scripts/logs/jd_speed_redpocke.log 2>&1
 ##############长期活动##############
@@ -85,7 +84,7 @@
 # 京喜农场
 0 9,12,18 * * * node /scripts/jd_jxnc.js >> /scripts/logs/jd_jxnc.log 2>&1
 # 签到领现金
-27 7 * * * node /scripts/jd_cash.js >> /scripts/logs/jd_cash.log 2>&1
+27 */4 * * * node /scripts/jd_cash.js >> /scripts/logs/jd_cash.log 2>&1
 # 京喜app签到
 39 7 * * * node /scripts/jx_sign.js >> /scripts/logs/jx_sign.log 2>&1
 # 京东家庭号(暂不知最佳cron)
@@ -100,5 +99,7 @@
 1 0,23 * * * node /scripts/jd_price.js >> /scripts/logs/jd_price.log 2>&1
 #京东极速版签到+赚现金任务
 1 1,6 * * * node /scripts/jd_speed_sign.js >> /scripts/logs/jd_speed_sign.log 2>&1
+#监控crazyJoy分红
+10 12 * * * node /scripts/jd_crazy_joy_bonus.js >> /scripts/logs/jd_crazy_joy_bonus.log 2>&1
 # 删除优惠券(默认注释，如需要自己开启，如有误删，已删除的券可以在回收站中还原，慎用)
 #20 9 * * 6 node /scripts/jd_delCoupon.js >> /scripts/logs/jd_delCoupon.log 2>&1
